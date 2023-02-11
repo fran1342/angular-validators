@@ -1,0 +1,98 @@
+<ion-header>
+  <ion-toolbar color="secondary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Productos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div>
+    <form [formGroup]="productoForm" (ngSubmit)="guardar()">
+      <ion-item>
+        <ion-label position="floating">Nombre</ion-label>
+        <ion-input type="text" formControlName="nombre"></ion-input>
+      </ion-item>
+      <ion-item lines="none">
+        <div class="validation-errors">
+          <ng-container *ngFor="let validation of mensajes.nombre">
+            <div class="error-message ion-text-end" *ngIf="productoForm.get('nombre').hasError(validation.type) && (productoForm.get('nombre').dirty || productoForm.get('nombre').touched)">
+              {{ validation.mensaje }}
+            </div>
+          </ng-container>
+        </div>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Descripci&oacute;n</ion-label>
+        <ion-textarea rows="6" cols="20" formControlName="desc"></ion-textarea>
+      </ion-item>
+      <ion-item lines="none">
+        <div class="validation-errors">
+          <ng-container *ngFor="let validation of mensajes.desc">
+            <div class="error-message ion-text-end" *ngIf="productoForm.get('desc').hasError(validation.type) && (productoForm.get('desc').dirty || productoForm.get('desc').touched)">
+              {{ validation.mensaje }}
+            </div>
+          </ng-container>
+        </div>
+      </ion-item>
+      <div formGroupName="precios_diferentes_group">
+        <ion-item>
+          <ion-label position="floating">Precio Compra</ion-label>
+          <ion-input type="text" formControlName="precioC"></ion-input>
+        </ion-item>
+        <ion-item lines="none">
+          <div class="validation-errors">
+            <ng-container *ngFor="let validation of mensajes.precioC">
+              <div class="error-message ion-text-end" *ngIf="productoForm.get('precios_diferentes_group').get('precioC').hasError(validation.type) && (productoForm.get('precios_diferentes_group').get('precioC').dirty || productoForm.get('precios_diferentes_group').get('precioC').touched)">
+                {{ validation.mensaje }}
+              </div>
+            </ng-container>
+          </div>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Precio Venta</ion-label>
+          <ion-input type="text" formControlName="precioV"></ion-input>
+        </ion-item>
+        <ion-item lines="none">
+          <div class="validation-errors">
+            <ng-container *ngFor="let validation of mensajes.precioV">
+              <div class="error-message ion-text-end" *ngIf="productoForm.get('precios_diferentes_group').get('precioV').hasError(validation.type) && (productoForm.get('precios_diferentes_group').get('precioV').dirty || productoForm.get('precios_diferentes_group').get('precioV').touched)">
+                {{ validation.mensaje }}
+              </div>
+            </ng-container>
+          </div>
+        </ion-item>
+      </div>
+      <ion-item>
+        <ion-label position="floating">Cantidad</ion-label>
+        <ion-input type="text" formControlName="cantidad"></ion-input>
+      </ion-item>
+      <ion-item lines="none">
+        <div class="validation-errors">
+          <ng-container *ngFor="let validation of mensajes.cantidad">
+            <div class="error-message ion-text-end" *ngIf="productoForm.get('cantidad').hasError(validation.type) && (productoForm.get('cantidad').dirty || productoForm.get('cantidad').touched)">
+              {{ validation.mensaje }}
+            </div>
+          </ng-container>
+        </div>
+      </ion-item>
+      <ion-item>
+        <ion-checkbox color="primary" formControlName="terminos"></ion-checkbox>
+        <ion-label>&nbsp;He validado que se cuentan con productos en existencia</ion-label>
+      </ion-item>
+      <ion-item lines="none">
+        <div class="validation-errors">
+          <ng-container *ngFor="let validation of mensajes.terminos">
+            <div class="error-message ion-text-end" *ngIf="productoForm.get('terminos').hasError(validation.type) && (productoForm.get('terminos').dirty || productoForm.get('terminos').touched)">
+              {{ validation.mensaje }}
+            </div>
+          </ng-container>
+        </div>
+      </ion-item>
+      <ion-item>
+        <ion-button color="primary" expand="block" fill="outline" type="submit">Guardar</ion-button>
+      </ion-item>
+    </form>
+  </div>
+</ion-content>

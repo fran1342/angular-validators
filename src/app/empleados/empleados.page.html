@@ -1,0 +1,131 @@
+<ion-header>
+  <ion-toolbar color="secondary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Empleados</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<div>
+  <form [formGroup]="empleadoForm" (ngSubmit)="guardar()">
+    <ion-item>
+      <ion-label position="floating">Nombre</ion-label>
+      <ion-input type="text" formControlName="nombre"></ion-input>
+    </ion-item>
+    <ion-item lines="none">
+      <div class="validation-errors">
+        <ng-container *ngFor="let validation of mensajes.nombre">
+          <div class="error-message ion-text-end" *ngIf="empleadoForm.get('nombre').hasError(validation.type) && (empleadoForm.get('nombre').dirty || empleadoForm.get('nombre').touched)">
+            {{ validation.mensaje }}
+          </div>
+        </ng-container>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">CURP</ion-label>
+      <ion-input type="text" formControlName="curp"></ion-input>
+    </ion-item>
+    <ion-item lines="none">
+      <div class="validation-errors">
+        <ng-container *ngFor="let validation of mensajes.curp">
+          <div class="error-message ion-text-end" *ngIf="empleadoForm.get('curp').hasError(validation.type) && (empleadoForm.get('curp').dirty || empleadoForm.get('curp').touched)">
+            {{ validation.mensaje }}
+          </div>
+        </ng-container>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Genero</ion-label>
+      <ion-select aria-placeholder="Selecciona una opcion" formControlName="gen">
+        <ion-select-option value="F">Femenino</ion-select-option>
+        <ion-select-option value="M">Masculino</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item lines="none">
+      <div class="validation-errors">
+        <ng-container *ngFor="let validation of mensajes.gen">
+          <div class="error-message ion-text-end" *ngIf="empleadoForm.get('gen').hasError(validation.type) && (empleadoForm.get('gen').dirty || empleadoForm.get('gen').touched)">
+            {{ validation.mensaje }}
+          </div>
+        </ng-container>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Fecha ingreso</ion-label>
+      <ion-datetime displayFormat="MM/DD/YYYY" min="1994-03-14" max="2030-12-09" formControlName="fecha"></ion-datetime>
+    </ion-item>
+    <ion-item lines="none">
+      <div class="validation-errors">
+        <ng-container *ngFor="let validation of mensajes.fecha">
+          <div class="error-message ion-text-end" *ngIf="empleadoForm.get('fecha').hasError(validation.type) && (empleadoForm.get('fecha').dirty || empleadoForm.get('fecha').touched)">
+            {{ validation.mensaje }}
+          </div>
+        </ng-container>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Salario</ion-label>
+      <ion-input type="text" formControlName="salario"></ion-input>
+    </ion-item>
+    <ion-item lines="none">
+      <div class="validation-errors">
+        <ng-container *ngFor="let validation of mensajes.salario">
+          <div class="error-message ion-text-end" *ngIf="empleadoForm.get('salario').hasError(validation.type) && (empleadoForm.get('salario').dirty || empleadoForm.get('salario').touched)">
+            {{ validation.mensaje }}
+          </div>
+        </ng-container>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Departamento</ion-label>
+      <ion-select aria-placeholder="Selecciona una opcion" formControlName="depa">
+        <ion-select-option value="R">Recursos Humanos</ion-select-option>
+        <ion-select-option value="A">Automatización</ion-select-option>
+        <ion-select-option value="C">Calidad</ion-select-option>
+        <ion-select-option value="S">Sistemas</ion-select-option>
+        <ion-select-option value="M">Mantenimiento</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item lines="none">
+      <div class="validation-errors">
+        <ng-container *ngFor="let validation of mensajes.depa">
+          <div class="error-message ion-text-end" *ngIf="empleadoForm.get('depa').hasError(validation.type) && (empleadoForm.get('depa').dirty || empleadoForm.get('depa').touched)">
+            {{ validation.mensaje }}
+          </div>
+        </ng-container>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Jefe directo</ion-label>
+      <ion-input type="text" formControlName="jefe"></ion-input>
+    </ion-item>
+    <ion-item lines="none">
+      <div class="validation-errors">
+        <ng-container *ngFor="let validation of mensajes.jefe">
+          <div class="error-message ion-text-end" *ngIf="empleadoForm.get('jefe').hasError(validation.type) && (empleadoForm.get('jefe').dirty || empleadoForm.get('jefe').touched)">
+            {{ validation.mensaje }}
+          </div>
+        </ng-container>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-checkbox color="primary" formControlName="terminos"></ion-checkbox>
+      <ion-label>&nbsp;Se ha validado los documentos del empleado</ion-label>
+    </ion-item>
+    <ion-item lines="none">
+      <div class="validation-errors">
+        <ng-container *ngFor="let validation of mensajes.terminos">
+          <div class="error-message ion-text-end" *ngIf="empleadoForm.get('terminos').hasError(validation.type) && (empleadoForm.get('terminos').dirty || empleadoForm.get('terminos').touched)">
+            {{ validation.mensaje }}
+          </div>
+        </ng-container>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-button color="primary" expand="block" fill="outline" type="submit">Guardar</ion-button>
+    </ion-item>
+  </form>
+</div>
+</ion-content>
